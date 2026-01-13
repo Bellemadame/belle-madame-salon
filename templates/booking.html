@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your appointment at Belle Madame Salon online. Choose from our range of services including nails, hair, lashes, and more.">
+  <title>Book Appointment | Belle Madame Salon</title>
+  
+  <!-- Fonts - Parisian Elegance Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/static/css/booking.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">Belle Madame</h1>
+      <p class="logo-subtitle">SALON DE BEAUTÉ</p>
+      <p class="header-subtitle">Book your appointment online</p>
+    </header>
+
+    <!-- Progress Steps -->
+    <div class="progress-container">
+      <div class="progress-step">
+        <div class="step-circle active">1</div>
+        <span class="step-label active">Service</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="step-circle">2</div>
+        <span class="step-label">Date & Time</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="step-circle">3</div>
+        <span class="step-label">Review</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="step-circle">4</div>
+        <span class="step-label">Confirm</span>
+      </div>
+    </div>
+
+    <!-- Main Booking Card -->
+    <main class="booking-card">
+      <!-- Step 1: Service Selection -->
+      <section id="step-1" class="booking-step active">
+        <h2 class="section-title">Select a Service</h2>
+        <div id="service-list">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Loading services...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: Date & Time Selection -->
+      <section id="step-2" class="booking-step">
+        <h2 class="section-title">Choose Date & Time</h2>
+        
+        <!-- Staff Selection -->
+        <div class="form-group">
+          <label for="staff-select" class="form-label">Select Staff Member</label>
+          <select id="staff-select" class="form-select">
+            <option value="">Loading staff...</option>
+          </select>
+        </div>
+
+        <!-- Date Selection -->
+        <div class="form-group">
+          <label for="booking-date" class="form-label">Select Date</label>
+          <div class="date-input-container">
+            <input type="date" id="booking-date" class="form-input" placeholder="Choose a date">
+          </div>
+        </div>
+
+        <!-- Time Slots -->
+        <div class="form-group" id="time-slots-container" style="display: none;">
+          <label class="form-label">Available Times</label>
+          <div id="time-slots">
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="btn-group">
+          <button type="button" id="next-btn" class="btn btn-primary" disabled>
+            Continue
+          </button>
+          <button type="button" id="back-btn" class="btn btn-secondary">
+            Back
+          </button>
+        </div>
+      </section>
+
+      <!-- Step 3: Review Booking -->
+      <section id="step-3" class="booking-step">
+        <h2 class="section-title">Review Your Booking</h2>
+        
+        <div id="booking-summary" class="booking-summary">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="next-btn" class="btn btn-primary">
+            Continue
+          </button>
+          <button type="button" id="back-btn" class="btn btn-secondary">
+            Back
+          </button>
+        </div>
+      </section>
+
+      <!-- Step 4: Client Details -->
+      <section id="step-4" class="booking-step">
+        <h2 class="section-title">Your Details</h2>
+        
+        <div class="form-group">
+          <label for="client-name" class="form-label">Full Name *</label>
+          <input type="text" id="client-name" class="form-input" placeholder="Enter your name" required>
+          <span id="name-error" class="error-message">Please enter your name</span>
+        </div>
+
+        <div class="form-group">
+          <label for="client-phone" class="form-label">Phone Number *</label>
+          <input type="tel" id="client-phone" class="form-input" placeholder="e.g., 071 123 4567" required>
+          <span id="phone-error" class="error-message">Please enter a valid phone number</span>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-notes" class="form-label">Special Requests (Optional)</label>
+          <textarea id="booking-notes" class="form-input" rows="3" placeholder="Any special requests or notes..."></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="submit-btn" class="btn btn-primary" disabled>
+            Confirm Booking
+          </button>
+          <button type="button" id="back-btn" class="btn btn-secondary">
+            Back
+          </button>
+        </div>
+      </section>
+
+      <!-- Step 5: Confirmation -->
+      <section id="step-5" class="booking-step">
+        <div id="confirmation-screen" class="confirmation-screen">
+          <div class="confirmation-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          
+          <h2 class="confirmation-title">Booking Confirmed!</h2>
+          <p class="confirmation-message">
+            Thank you for booking with Belle Madame Salon.<br>
+            A confirmation SMS has been sent to your phone.
+          </p>
+          
+          <div class="booking-summary">
+            <div class="summary-row">
+              <span class="summary-label">Service</span>
+              <span class="summary-value" id="confirm-service">-</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Date & Time</span>
+              <span class="summary-value" id="confirm-datetime">-</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Price</span>
+              <span class="summary-value summary-total" id="confirm-price">-</span>
+            </div>
+          </div>
+          
+          <button type="button" id="confirm-another" class="btn btn-primary">
+            Book Another Appointment
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-phone">071 686 9315</p>
+      <p class="footer-address">
+        123 Beauty Lane, Cape Town<br>
+        Open Mon-Sat 9am-8pm, Sun 9am-7pm
+      </p>
+    </footer>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JavaScript -->
+  <script src="/static/js/booking.js"></script>
+</body>
+</html>

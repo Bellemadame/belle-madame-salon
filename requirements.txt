@@ -1,0 +1,29 @@
+# Belle Madame Salon Online Booking System
+# Python Dependencies
+
+# Web Framework
+Flask>=2.3.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Production WSGI Server
+gunicorn>=21.0.0
+
+# SMS Notifications (Twilio)
+# Install for SMS functionality: pip install twilio
+twilio>=8.0.0
+
+# Database (built-in, no installation needed for SQLite)
+# For PostgreSQL: psycopg2-binary>=2.9.0
+# For MySQL: mysql-connector-python>=8.0.0
+
+# Scheduler (for automated reminders)
+# APScheduler>=3.10.0
+
+# Testing
+pytest>=7.0.0
+pytest-flask>=1.2.0
+
+# Development
+python-dotenv>=1.0.0
